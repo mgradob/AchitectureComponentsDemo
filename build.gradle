@@ -6,6 +6,8 @@ buildscript {
     ext.constraints_version = '1.0.2'
     ext.arch_version = '1.0.0-rc1'
     ext.arch_lifecycle_version = '1.0.3'
+    ext.retrofit_version = '2.3.0'
+    ext.dagger_version = '2.12'
 
     repositories {
         google()

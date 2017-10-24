@@ -23,6 +23,10 @@ android {
     }
 }
 
+kapt {
+    generateStubs true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -32,15 +36,16 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraints_version"
     implementation "android.arch.lifecycle:runtime:$arch_lifecycle_version"
     implementation 'com.android.support:support-v4:26.1.0'
-    annotationProcessor "android.arch.lifecycle:compiler:$arch_version"
+    kapt "android.arch.lifecycle:compiler:$arch_version"
     implementation "android.arch.lifecycle:extensions:$arch_version"
     implementation "android.arch.persistence.room:runtime:$arch_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$arch_version"
+    kapt "android.arch.persistence.room:compiler:$arch_version"
     implementation "android.arch.persistence.room:rxjava2:$arch_version"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
     implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     testImplementation 'junit:junit:4.12'

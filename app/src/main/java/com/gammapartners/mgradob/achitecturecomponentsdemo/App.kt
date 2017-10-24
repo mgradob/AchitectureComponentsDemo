@@ -10,11 +10,9 @@ import com.gammapartners.mgradob.achitecturecomponentsdemo.di.UserModule
  */
 class App: Application() {
 
-    companion object {
-        fun get() = this
+    val mAppComponent: AppComponent by lazy {
+        DaggerAppComponent.builder()
+                .userModule(UserModule(this))
+                .build()
     }
-
-    val mAppComponent: AppComponent? = DaggerAppComponent.builder()
-            .userModule(UserModule(this))
-            .build()
 }

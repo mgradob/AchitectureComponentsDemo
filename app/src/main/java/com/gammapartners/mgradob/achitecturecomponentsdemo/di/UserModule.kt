@@ -16,15 +16,15 @@ import javax.inject.Singleton
 class UserModule(val app: App) {
 
     @Provides
-    fun providesAppContext() = app
+    fun providesAppContext() = app.applicationContext
 
     @Provides
     @Singleton
-    fun providesDatabase(app: App) =
-            Room.databaseBuilder(app, Database::class.java, "db")
+    fun providesDatabase(context: Context) =
+            Room.databaseBuilder(context, Database::class.java, "db")
                     .build()
 
     @Provides
     @Singleton
-    fun providesUserRepository() = UserRepository()
+    fun providesUserRepository(context: Context) = UserRepository(context)
 }

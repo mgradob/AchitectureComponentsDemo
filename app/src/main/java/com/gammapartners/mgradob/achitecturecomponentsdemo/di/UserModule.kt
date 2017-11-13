@@ -20,11 +20,9 @@ class UserModule(val app: App) {
 
     @Provides
     @Singleton
-    fun providesDatabase(context: Context) =
-            Room.databaseBuilder(context, Database::class.java, "db")
-                    .build()
+    fun providesDatabase(context: Context) = Room.databaseBuilder(context, Database::class.java, "db").build()
 
     @Provides
     @Singleton
-    fun providesUserRepository(context: Context) = UserRepository(context)
+    fun providesUserRepository() = UserRepository()
 }

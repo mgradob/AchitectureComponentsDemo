@@ -2,9 +2,13 @@ package com.gammapartners.mgradob.achitecturecomponentsdemo.views.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.gammapartners.mgradob.achitecturecomponentsdemo.App
+import com.gammapartners.mgradob.achitecturecomponentsdemo.App.Companion
 import com.gammapartners.mgradob.achitecturecomponentsdemo.R
-import com.gammapartners.mgradob.achitecturecomponentsdemo.views.fragments.UserProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.gammapartners.mgradob.achitecturecomponentsdemo.views.fragments.EditUserProfileFragment
+import com.gammapartners.mgradob.achitecturecomponentsdemo.views.fragments.ViewUserProfileFragment
+import kotlinx.android.synthetic.main.activity_main.mainContainerCL
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,8 +16,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        App.mAppComponent.inject(this)
+
         supportFragmentManager.beginTransaction()
-                .replace(mainContainerCL.id, UserProfileFragment())
+                .add(mainContainerCL.id, ViewUserProfileFragment())
+                .add(mainContainerCL.id, EditUserProfileFragment())
                 .commit()
     }
 }

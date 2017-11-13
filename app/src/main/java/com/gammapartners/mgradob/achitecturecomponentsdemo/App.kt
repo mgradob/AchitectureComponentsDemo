@@ -8,10 +8,16 @@ import com.gammapartners.mgradob.achitecturecomponentsdemo.di.UserModule
 /**
  * Created by mgradob on 10/23/17.
  */
-class App: Application() {
+class App : Application() {
 
-    val mAppComponent: AppComponent by lazy {
-        DaggerAppComponent.builder()
+    companion object {
+        lateinit var mAppComponent: AppComponent
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+
+        mAppComponent = DaggerAppComponent.builder()
                 .userModule(UserModule(this))
                 .build()
     }

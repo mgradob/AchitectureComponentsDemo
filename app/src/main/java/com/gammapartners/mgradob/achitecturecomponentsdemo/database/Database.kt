@@ -7,7 +7,7 @@ import com.gammapartners.mgradob.achitecturecomponentsdemo.models.User
 /**
  * Created by mgradob on 10/23/17.
  */
-@Database(entities = arrayOf(User::class), version = 1)
+@Database(entities = arrayOf(User::class), version = 1, exportSchema = false)
 abstract class Database : RoomDatabase() {
 
     abstract fun userDao(): UserDao
